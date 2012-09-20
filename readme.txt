@@ -2,7 +2,7 @@
 Tags: rate, rating, ratings, vote, votes, voting, star, like, widget, widgets, comment, comments, post, posts, page, admin, plugin, ajax, buddypress, bbpress
 Requires at least: 2.6
 Tested up to: 3.5
-Stable tag: 1.0
+Stable tag: 1.1
 Contributors: Jordi Plana
 
 Add a Like button in all your posts and replies. Let the users appreciate others contribution.
