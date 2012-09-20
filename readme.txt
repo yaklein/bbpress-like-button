@@ -32,6 +32,7 @@ The plugin comes with .po files. Feel free to translate it to your language!
 
 = TODO/Wishlist =
 **Dashboard**
+
 * export likes log to CSV
 * reply/post list view column with like number in the dashboard
 * reset logs button
@@ -40,7 +41,9 @@ The plugin comes with .po files. Feel free to translate it to your language!
 * Option: allow anonymous vote (ip)
 * Option: allow like only replies (exclude OP)
 * Option: automatically embed
+
 **Frontend**
+
 * icons set
 * public unlike?
 * widget most liked post/user
@@ -73,3 +76,5 @@ You can ask questions about the plugin in the plugin official site: [bbPress Lik
 == Change Log ==
 = 1.0 =
 * Initial release.
+= 1.1 =
+* Typo Errors
