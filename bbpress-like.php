@@ -5,29 +5,7 @@
  * Description: Add a Like button in all your posts and replies. Let the users appreciate others contribution.
  * Author:      Jordi Plana
  * Author URI:  http://jordiplana.com
- * Version:     1.0
- */
-
-/*
- * TODO:
- * 
- * Dashboard====
- * export CSV
- * reply/post list view column with like number in the dashboard
- * new options:
- *  -enable/disable tooltip
- *  -allow anonymous vote (ip)
- *  -allow like only replies (exclude OP)
- *  -automatically embed
- * reset logs button
- * add do_action and apply_filters
- * 
- * Frontend ====
- * icons
- * public unlike?
- * widget most liked post/user
- * show number of likes
- *  
+ * Version:     1.1
  */
 
 load_plugin_textdomain( 'bbpl', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
