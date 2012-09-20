@@ -15,6 +15,7 @@ The plugin is designed to interact via AJAX in both sides: dashboard and fronten
 
 = Shortcodes =
 You can use a collection of shortcodes to embed some cool stadistics into posts, pages and widgets.
+
 * **[most_liked_users]** and **[most_liked_users exclude_admins=true]**
 * **[most_liking_users]**
 * **[most_liked_posts]**
