@@ -1,0 +1,33 @@
+@charset "UTF-8";
+/* CSS Document */
+a.bbpl_button span{display:none;}
+a.bbpl_button {
+    display:block;
+    height: 20px;
+    width: 20px;
+    background: url('../img/thumbs_up_20_20.png') no-repeat;
+    float:right;
+    margin-left:10px;
+}
+a.bbpl_button.liked {opacity: 0.3;}
+a.bbpl_button.like-loading{background: url('../img/ajax-loader.gif') no-repeat;}
+
+.hide{display: none; opacity: 0;} 
+
+/* tooltip styling. by default the element to be styled is .tooltip  */
+  .tooltip {
+    display:none;
+    /*background:transparent url(../img/black_arrow.png);*/
+    background: #FFF;
+    border: 1px solid #E4E4E4;
+    font-size:12px;
+    /*height:70px;
+    width:160px;
+    padding:25px;*/
+    padding: 0 5px;
+    color:#666;
+    margin-left: 5px;
+  }
+  span.who_liked{
+      cursor: pointer;
+  }
