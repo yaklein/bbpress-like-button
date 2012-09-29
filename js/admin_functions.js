@@ -3,7 +3,7 @@ jQuery(function() {
     jQuery(document).ready(function($){
 
         $('.likes_log_table').flexigrid({
-            url: userSettings.url + 'wp-content/plugins/bbpress-like/json_logs.php',
+            url: userSettings.url + 'wp-content/plugins/bbpress-like-button/json_logs.php',
             dataType: 'json',
             colModel:[
                 {display: $('#flex_col_caption_0').html(), name:'id', sortable: false, width: 10},
