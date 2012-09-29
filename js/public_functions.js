@@ -18,6 +18,10 @@ jQuery(function() {
             $.post(ajaxurl, data, function(response){
                 /*console.debug(response);*/
                 button.removeClass('like-loading').addClass('liked');
+                var likes_number = $('.bbpl_number');
+                if(likes_number){
+                    likes_number.text(parseInt(likes_number.text(),10) + 1);
+                }
             });
             
         });
