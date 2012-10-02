@@ -39,8 +39,10 @@ All that prints the plugins is CSS3 and HTML5 compliant.
 * reply/post list view column with like number in the dashboard
 * reset logs button
 * add do_action and apply_filters
+* BuddyPress Activity Stream integration
 * Option: allow anonymous vote (ip)
 * Option: allow like only replies (exclude OP)
+* Option: email notification on like
 
 **Frontend**
 
