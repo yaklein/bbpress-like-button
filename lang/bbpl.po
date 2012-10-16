@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bbPress Like Button\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-13 11:23+0100\n"
-"PO-Revision-Date: 2012-09-13 11:23+0100\n"
+"POT-Creation-Date: 2012-10-16 10:00+0100\n"
+"PO-Revision-Date: 2012-10-16 10:00+0100\n"
 "Last-Translator: \n"
 "Language-Team: jordiplana.com <hi@jordiplana.com>\n"
 "MIME-Version: 1.0\n"
@@ -14,136 +14,172 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../bbpress-like.php:55
+#: ../class.bbpress_like.php:73
 msgid "Likes"
 msgstr ""
 
-#: ../bbpress-like.php:58
+#: ../class.bbpress_like.php:74
 msgid "Likes logs"
 msgstr ""
 
-#: ../bbpress-like.php:59
+#: ../class.bbpress_like.php:75
+#: ../class.bbpress_like.php:387
 msgid "Likes stadistics"
 msgstr ""
 
-#: ../bbpress-like.php:187
+#: ../class.bbpress_like.php:204
 msgid "This post was already liked by this user"
 msgstr ""
 
-#: ../bbpress-like.php:191
+#: ../class.bbpress_like.php:208
 msgid "An error ocurred: "
 msgstr ""
 
-#: ../bbpress-like.php:191
+#: ../class.bbpress_like.php:208
 msgid "Liked successfully"
 msgstr ""
 
-#: ../bbpress-like.php:202
+#: ../class.bbpress_like.php:219
 msgid "and"
 msgstr ""
 
-#: ../bbpress-like.php:202
+#: ../class.bbpress_like.php:219
 msgid "more people"
 msgstr ""
 
-#: ../bbpress-like.php:257
+#: ../class.bbpress_like.php:276
 #: ../json_logs.php:54
 msgid "Edit"
 msgstr ""
 
-#: ../bbpress-like.php:259
+#: ../class.bbpress_like.php:282
 #: ../json_logs.php:54
 msgid "View"
 msgstr ""
 
-#: ../bbpress-like.php:259
+#: ../class.bbpress_like.php:282
 msgid "by"
 msgstr ""
 
-#: ../bbpress-like.php:259
+#: ../class.bbpress_like.php:282
 msgid "liked this"
 msgstr ""
 
-#: ../bbpress-like.php:259
-#: ../bbpress-like.php:278
-#: ../bbpress-like.php:298
+#: ../class.bbpress_like.php:282
+#: ../class.bbpress_like.php:304
+#: ../class.bbpress_like.php:327
 msgid "likes"
 msgstr ""
 
-#: ../bbpress-like.php:263
-#: ../bbpress-like.php:282
-#: ../bbpress-like.php:302
-#: ../bbpress-like.php:380
+#: ../class.bbpress_like.php:286
+#: ../class.bbpress_like.php:308
+#: ../class.bbpress_like.php:331
+#: ../class.bbpress_like.php:423
 msgid "Sorry! Nobody has liked any post or reply yet..."
 msgstr ""
 
-#: ../bbpress-like.php:318
+#: ../class.bbpress_like.php:347
 msgid "You liked this"
 msgstr ""
 
-#: ../bbpress-like.php:318
+#: ../class.bbpress_like.php:347
 msgid "Like this"
 msgstr ""
 
-#: ../bbpress-like.php:331
-#: ../bbpress-like.php:343
+#: ../class.bbpress_like.php:375
 msgid "Likes Options"
 msgstr ""
 
-#: ../bbpress-like.php:346
+#: ../class.bbpress_like.php:390
 msgid "Most liked users (admins included)"
 msgstr ""
 
-#: ../bbpress-like.php:347
-#: ../bbpress-like.php:351
+#: ../class.bbpress_like.php:391
+#: ../class.bbpress_like.php:395
 msgid "Top 10 most liked users."
 msgstr ""
 
-#: ../bbpress-like.php:350
+#: ../class.bbpress_like.php:394
 msgid "Most liked users (admins excluded)"
 msgstr ""
 
-#: ../bbpress-like.php:354
+#: ../class.bbpress_like.php:398
 msgid "Most liking users"
 msgstr ""
 
-#: ../bbpress-like.php:355
+#: ../class.bbpress_like.php:399
 msgid "Top 10 users who most use Like button."
 msgstr ""
 
-#: ../bbpress-like.php:358
+#: ../class.bbpress_like.php:402
 msgid "Most liked posts"
 msgstr ""
 
-#: ../bbpress-like.php:359
+#: ../class.bbpress_like.php:403
 msgid "Top 10 posts liked."
 msgstr ""
 
-#: ../bbpress-like.php:368
+#: ../class.bbpress_like.php:412
 msgid "Likes Logs"
 msgstr ""
 
-#: ../bbpress-like.php:385
+#: ../class.bbpress_like.php:428
 msgid "ID"
 msgstr ""
 
-#: ../bbpress-like.php:386
+#: ../class.bbpress_like.php:429
 msgid "Date"
 msgstr ""
 
-#: ../bbpress-like.php:387
+#: ../class.bbpress_like.php:430
 msgid "User"
 msgstr ""
 
-#: ../bbpress-like.php:388
+#: ../class.bbpress_like.php:431
 msgid "Post/Reply"
 msgstr ""
 
-#: ../bbpress-like.php:389
+#: ../class.bbpress_like.php:432
 msgid "Action"
 msgstr ""
 
-#: ../bbpress-like.php:390
+#: ../class.bbpress_like.php:433
 msgid "Delete like"
+msgstr ""
+
+#: ../wp-settings-framework.php:275
+msgid "Save Changes"
+msgstr ""
+
+#: ../settings/settings-bbpl.php:8
+msgid "General Settings"
+msgstr ""
+
+#: ../settings/settings-bbpl.php:9
+msgid "Here you can adjust the plugin settings."
+msgstr ""
+
+#: ../settings/settings-bbpl.php:14
+msgid "Automatically embed button"
+msgstr ""
+
+#: ../settings/settings-bbpl.php:15
+msgid "The plugin will try to automatically embed the Like Button. You can manually embed the button calling <strong>bbp_like_button()</strong> function inside the reply loop."
+msgstr ""
+
+#: ../settings/settings-bbpl.php:21
+msgid "Show number of likes"
+msgstr ""
+
+#: ../settings/settings-bbpl.php:22
+msgid "Show the number of likes next to the button"
+msgstr ""
+
+#: ../settings/settings-bbpl.php:28
+msgid "Show tooltip"
+msgstr ""
+
+#: ../settings/settings-bbpl.php:29
+msgid "Show tooltip, with people who liked, on shortcode lists output."
 msgstr ""
 

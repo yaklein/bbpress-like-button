@@ -56,10 +56,6 @@ class bbpress_like {
         add_shortcode('most_liked_users', array($this,'get_most_liked_users_shortcode'));
         add_shortcode('most_liking_users', array($this,'get_most_liking_users_shortcode'));
         add_shortcode('most_liked_posts', array($this,'get_most_liked_posts_shortcode'));
-
-        //Activation and deactivation hooks
-        register_activation_hook( __FILE__, array($this,'plugin_activation') );
-        register_uninstall_hook( __FILE__, array($this,'plugin_uninstall') );
     }
     
     function init() {
@@ -84,10 +80,10 @@ class bbpress_like {
 
     }
 
-    function plugin_activation(){
+    static function plugin_activation(){
         global $wpdb;
 
-        $sql = "CREATE TABLE IF NOT EXISTS ". $this->table_name . " (
+        $sql = "CREATE TABLE IF NOT EXISTS ". $wpdb->prefix.'bbplike' . " (
             id int(11) NOT NULL AUTO_INCREMENT,
             post_id bigint(20) NOT NULL,
             user_id bigint(20) NOT NULL,

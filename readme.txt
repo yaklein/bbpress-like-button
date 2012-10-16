@@ -2,7 +2,7 @@
 Tags: rate, rating, ratings, vote, votes, voting, star, like, widget, widgets, comment, comments, post, posts, page, admin, plugin, ajax, buddypress, bbpress
 Requires at least: 2.6
 Tested up to: 3.4.2
-Stable tag: 1.2
+Stable tag: 1.3
 Contributors: Jordi Plana
 
 Add a Like button in all your posts and replies. Let the users appreciate others contribution.
@@ -21,8 +21,9 @@ You can use a collection of shortcodes to embed some cool stadistics into posts,
 bbPress Like Button is currently in:
 
 * English
-* Spanish
+* Macedonian (by [crazy-nomce](http://wordpress.org/support/profile/crazy-nomce))
 * Persian (by [Mortaza Nazari](http://m-nazari.ir))
+* Spanish
 
 The plugin comes with .po files. Feel free to translate it to your language!
 
@@ -71,6 +72,9 @@ Thanks to Gilbert Pellegrom for his excelent [Wordpress Settings Framework](http
 
 == Frequently Asked Questions ==
 
+= I installed version 1.2 of the plugin and apparently it does not track likes =
+Version 1.2 of the plugin had a bug on plugin activation. Is solved in the next versions. Please update your plugin
+
 = Why does not appear the like button in the frontend? =
 Plugin waits for **bbp_theme_before_reply_admin_links** action. Check your theme for this action. Another solutions is to add manually a call to the function that shows the button: **bbp_like_button()**.
 
@@ -78,12 +82,15 @@ Plugin waits for **bbp_theme_before_reply_admin_links** action. Check your theme
 You can ask questions about the plugin in the plugin official site: [bbPress Like Button](http://jordiplana.com/bbpress-like-button-plugin)
 
 == Change Log ==
-= 1.0 =
-* Initial release.
-= 1.1 =
-* Typo Errors
+= 1.3 =
+* Fixed activation hook error (creating plugin table)
+* Added Macedonian language
 = 1.2 =
 * Fixed error with the Grid (Likes Log)
 * Fixed AJAX Error
 * Settings page
 * Data sanitization (security)
+= 1.1 =
+* Typo Errors
+= 1.0 =
+* Initial release.
