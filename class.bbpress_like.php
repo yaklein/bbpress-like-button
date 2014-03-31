@@ -2,7 +2,6 @@
 class bbpress_like {
     
     private $plugin_path;
-    private $plugin_url;
     private $l10n;
     private $wpsf;
     private $settings;
@@ -14,9 +13,8 @@ class bbpress_like {
         
         //Common used variables
         $this->plugin_path = plugin_dir_path( __FILE__ );
-        $this->plugin_url = plugin_dir_url( __FILE__ );
         $this->l10n = 'bbpl';
-        $this->table_name = $wpdb->prefix.'bbplike';
+        $this->table_name = $wpdb->prefix.'postmeta';
         
         // Include and create a new WordPressSettingsFramework
         require_once( $this->plugin_path .'wp-settings-framework.php' );
@@ -60,13 +58,13 @@ class bbpress_like {
     
     function init() {
         //Styles
-        wp_register_style( 'bbpl_public', plugins_url('css/bbpl_style.css', __FILE__) );
-        wp_register_style( 'flexigrid', plugins_url('css/flexigrid.css', __FILE__) );
+        wp_register_style( 'bbpl_public', plugins_url('bbpress-like-button/css/bbpl_style.css' ) );
+        wp_register_style( 'flexigrid', plugins_url('bbpress-like-button/css/flexigrid.css' ) );
     }
   
     function admin_menu(){
         $pages = array();
-        $pages[] = add_menu_page(__('Likes',$this->l10n), __('Likes',$this->l10n), 'add_users', 'bbpress-likes' , array($this,'admin_screen'), $this->plugin_url.'img/thumbs_up_15_15.png', 100);
+        $pages[] = add_menu_page(__('Likes',$this->l10n), __('Likes',$this->l10n), 'add_users', 'bbpress-likes' , array($this,'admin_screen'), plugins_url('bbpress-like-button/img/thumbs_up_15_15.png'), 100);
         $pages[] = add_submenu_page('bbpress-likes',__('Likes logs',$this->l10n), __('Likes logs',$this->l10n), 'add_users', 'bbpress-likes-logs', array($this,'logs_screen'));
         $pages[] = add_submenu_page('bbpress-likes',__('Likes stadistics',$this->l10n), __('Likes stadistics',$this->l10n), 'add_users', 'bbpress-likes-stadistics', array($this,'stadistics_screen'));
         
@@ -80,21 +78,6 @@ class bbpress_like {
 
     }
 
-    static function plugin_activation(){
-        global $wpdb;
-
-        $sql = "CREATE TABLE IF NOT EXISTS ". $wpdb->prefix.'bbplike' . " (
-            id int(11) NOT NULL AUTO_INCREMENT,
-            post_id bigint(20) NOT NULL,
-            user_id bigint(20) NOT NULL,
-            time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-            PRIMARY KEY (id)
-            ) TYPE=MyISAM AUTO_INCREMENT=1;
-        ";
-
-        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-        dbDelta($sql);
-    }
     
     function plugin_uninstall(){
         
@@ -112,28 +95,28 @@ class bbpress_like {
     function admin_enqueue_scripts(){
         wp_enqueue_script( 
              'jquery.cookie'
-            ,plugins_url('js/jquery.cookie.js', __FILE__)
+            ,plugins_url('bbpress-like-button/js/jquery.cookie.js' )
             ,'jquery'
             ,'1.2'
             ,true 
         );
         wp_enqueue_script( 
              'flexigrid'
-            ,plugins_url('js/flexigrid.js', __FILE__)
+            ,plugins_url('bbpress-like-button/js/flexigrid.js')
             ,'jquery'
             ,'1.1'
             ,true 
         );
         wp_enqueue_script( 
              'bbpl-functions'
-            ,plugins_url('js/admin_functions.js', __FILE__)
+            ,plugins_url('bbpress-like-button/js/admin_functions.js')
             ,''
             ,'1.0'
             ,true 
         );
         wp_enqueue_script( 
              'jquery.tools.tooltip'
-            ,plugins_url('js/jquery.tools.min.tooltip.js', __FILE__)
+            ,plugins_url('bbpress-like-button/js/jquery.tools.min.tooltip.js')
             ,'jquery'
             ,'1.2.7'
             ,true 
@@ -143,14 +126,14 @@ class bbpress_like {
     function public_enqueue_scripts(){
         wp_enqueue_script( 
              'bbpl-functions'
-            ,plugins_url('js/public_functions.js', __FILE__)
+            ,plugins_url('bbpress-like-button/js/public_functions.js')
             ,''
             ,'1.0'
             ,true 
         );
         wp_enqueue_script( 
              'jquery.tools.tooltip'
-            ,plugins_url('js/jquery.tools.min.tooltip.js', __FILE__)
+            ,plugins_url('bbpress-like-button/js/jquery.tools.min.tooltip.js')
             ,'jquery'
             ,'1.2.7'
             ,true 
@@ -159,34 +142,36 @@ class bbpress_like {
     /* STYLES AND SCRIPT END */
     
     /* HELPER FUNCTIONS START */
-    function get_like($user_id, $post_id){
+    function get_like($post_id,$user_id){
         global $wpdb;
-        $result = $wpdb->get_row($wpdb->prepare("SELECT id FROM $this->table_name WHERE user_id = %d AND post_id = %d",$user_id, $post_id));
+        $result = $wpdb->get_row($wpdb->prepare("SELECT post_id, meta_value AS user_id FROM $this->table_name WHERE meta_key = 'bbpl_like' AND post_id = %d AND meta_value = %d", $post_id, $user_id));
         return $result;
     }
     
     function get_likes_number($post_id){
         global $wpdb;
-        $result = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM $this->table_name WHERE post_id = %d",$post_id));
+        $result = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM $this->table_name WHERE meta_key = 'bbpl_like' AND post_id = %d",$post_id));
         return $result;
     }
     
     function get_who_liked($post_id){
         global $wpdb;
-        $result = $wpdb->get_results($wpdb->prepare("SELECT user_id FROM $this->table_name WHERE post_id = %d ORDER BY time DESC",$post_id), ARRAY_A);
+        $result = $wpdb->get_results($wpdb->prepare("SELECT meta_value AS user_id FROM $this->table_name WHERE meta_key = 'bbpl_like' AND post_id = %d ORDER BY meta_id DESC",$post_id), ARRAY_A);
         return $result;
     }
     
     function delete_like(){
-        global $wpdb;
+        // DEPRECATED
         
-        extract($_POST);
+        //global $wpdb;
         
-        if(!isset($id)) die;
+        //extract($_POST);
         
-        return $wpdb->query("DELETE FROM $this->table_name WHERE id = $id");
+        //if(!isset($id)) die;
         
-        die;
+        //return $wpdb->query("DELETE FROM $this->table_name WHERE id = $id");
+        
+        //die;
     }
     
     function like_this(){
@@ -195,12 +180,12 @@ class bbpress_like {
         extract($_POST);
         
         //Check if previously liked
-        $liked = self::get_like($user_id, $post_id);
+        $liked = self::get_like($post_id,$user_id);
         if($liked){
             _e('This post was already liked by this user', $this->l10n);
         }else{
             //Insert like
-            $result = $wpdb->query($wpdb->prepare("INSERT INTO {$this->table_name} (post_id,user_id,time) VALUES (%d,%d,%s)",$post_id, $user_id, date('Y-m-d H:i:s')));
+            $result = add_post_meta($post_id, 'bbpl_like', $user_id);
             if(!$result){ _e('An error ocurred: ', $this->l10n).$wpdb->print_error(); }else{ _e('Liked successfully',$this->l10n);}
         }
         die;
@@ -245,14 +230,15 @@ class bbpress_like {
     /* STADISTICS START */
     function get_most_liked_posts($echo = true){
         global $wpdb;
-        $result = $wpdb->get_results("SELECT COUNT(*) liked_post_count, bbpl.post_id liked_post_id, bbpl.*, po.post_author post_author FROM $this->table_name bbpl INNER JOIN {$wpdb->prefix}posts po ON po.ID = bbpl.post_id GROUP BY liked_post_id ORDER BY liked_post_count DESC, liked_post_id ASC", ARRAY_A);
-        
+        $result = $wpdb->get_results("SELECT COUNT(*) liked_post_count, post_id FROM $this->table_name WHERE meta_key = 'bbpl_like' GROUP BY post_id", ARRAY_A);
+
         if(!$echo) ob_start();
         if($result){
             echo '<ol>';
             
             foreach($result as $liked_posts){
-                $post = get_post($liked_posts['liked_post_id']);
+
+                $post = get_post($liked_posts['post_id']);
                 
                 $who_liked_caption= '';
                 if((Bool)$this->settings['settingsbbpl_bbpl_general_show_tooltip']){
@@ -267,7 +253,7 @@ class bbpress_like {
                     $extra_link = '';
                 }
                 $link = get_permalink($parent_id).$extra_link;
-                $user = get_userdata($liked_posts['post_author']);
+                $user = get_userdata($post->post_author);
                 if(current_user_can('add_users')){
                     $admin_links = '<a href="post.php?post='.$post->ID.'&action=edit" target="_blank" >'.__('Edit',$this->l10n).'</a>';
                 }
@@ -285,14 +271,14 @@ class bbpress_like {
     }
     function get_most_liked_users($echo = true, $exclude_admins = false, $get_only_data = false){
         global $wpdb;
-        $result = $wpdb->get_results("SELECT COUNT(*) liked_user_count, po.post_author liked_user_id FROM $this->table_name bbpl INNER JOIN {$wpdb->prefix}posts po ON po.ID = bbpl.post_id GROUP BY liked_user_id ORDER BY liked_user_count DESC LIMIT 10", ARRAY_A);
+        $result = $wpdb->get_results("SELECT COUNT(*) liked_user_count, meta_value as user_id FROM $this->table_name WHERE meta_key = 'bbpl_like' GROUP BY user_id ORDER BY liked_user_count DESC LIMIT 10", ARRAY_A);
         
         $get_only_data_arr = array();
         if(!$echo) ob_start();
         if($result){
             echo '<ol>';
             foreach($result as $liked_users){
-                $user = get_userdata($liked_users['liked_user_id']);
+                $user = get_userdata($liked_users['user_id']);
                 if($get_only_data){
                     $get_only_data_arr[] = array('user' => $user, 'number_likes' => $liked_users['liked_user_count']);
                 }
@@ -312,13 +298,13 @@ class bbpress_like {
     
     function get_most_liking_users($echo = true, $exclude_admins = false){
         global $wpdb;
-        $result = $wpdb->get_results("SELECT COUNT(*) liking_user_count, bbpl.user_id liking_user_id FROM $this->table_name bbpl INNER JOIN {$wpdb->prefix}posts po ON po.ID = bbpl.post_id GROUP BY bbpl.user_id ORDER BY liking_user_count DESC LIMIT 10", ARRAY_A);
+        $result = $wpdb->get_results("SELECT COUNT(*) liking_user_count, meta_value as user_id FROM $this->table_name WHERE meta_key = 'bbpl_like' GROUP BY user_id ORDER BY liking_user_count DESC LIMIT 10", ARRAY_A);
         
         if(!$echo) ob_start();
         if($result){
             echo '<ol>';
             foreach($result as $liking_users){
-                $user = get_userdata($liking_users['liking_user_id']);
+                $user = get_userdata($liking_users['user_id']);
                 if($exclude_admins && $user->caps['administrator']==1) continue;
                 echo '<li>'.$user->user_login.' ('.$liking_users['liking_user_count'].' '.__('likes',$this->l10n).')</li>';
             }
@@ -338,7 +324,7 @@ class bbpress_like {
         $post_id = $post->ID;
         $user_id = get_current_user_id();
         
-        $liked = ($this->get_like($user_id, $post_id)) == NULL ? false : true;
+        $liked = ($this->get_like($post_id,$user_id)) == NULL ? false : true;
         
         $link_caption = ($liked == true ? __('You liked this',$this->l10n) : __('Like this', $this->l10n));
         
@@ -412,7 +398,7 @@ class bbpress_like {
         <?php
         //Get the data
         global $wpdb;
-        $results = $wpdb->get_results("SELECT * FROM $this->table_name",ARRAY_A);
+        $results = $wpdb->get_results("SELECT * FROM $this->table_name where meta_key = 'bbpl_like'",ARRAY_A);
         
         if(empty($results)){
             ?>

@@ -1,13 +1,15 @@
 === bbPress Like Button ===
 Tags: rate, rating, ratings, vote, votes, voting, star, like, widget, widgets, comment, comments, post, posts, page, admin, plugin, ajax, buddypress, bbpress
 Requires at least: 2.6
-Tested up to: 3.4.2
-Stable tag: 1.3
+Tested up to: 3.8.1
+Stable tag: 1.4
 Contributors: Jordi Plana
 
 Add a Like button in all your posts and replies. Let the users appreciate others contribution.
 
 == Description ==
+**Updated to work with Wordpress 3.8 and bbPress 2.5**
+
 bbPress Like button adds automatically a **Like Button** (Youtube alike) in all your forum posts and replies. It allows users to give some greetings to others contributions. 
 
 = Shortcodes =
@@ -23,6 +25,7 @@ bbPress Like Button is currently in:
 * English
 * Macedonian (by [crazy-nomce](http://wordpress.org/support/profile/crazy-nomce))
 * Persian (by [Mortaza Nazari](http://m-nazari.ir))
+* Serbo-Croatian (by [Borisa Djuraskovic](http://www.webhostinghub.com))
 * Spanish
 
 The plugin comes with .po files. Feel free to translate it to your language!
@@ -41,14 +44,13 @@ All that prints the plugins is CSS3 and HTML5 compliant.
 * reset logs button
 * add do_action and apply_filters
 * BuddyPress Activity Stream integration
-* Option: allow anonymous vote (ip)
 * Option: allow like only replies (exclude OP)
 * Option: email notification on like
 
 **Frontend**
 
 * icons set
-* public unlike?
+* unlike
 * widget most liked post/user
 
 = Official site =
@@ -72,8 +74,8 @@ Thanks to Gilbert Pellegrom for his excelent [Wordpress Settings Framework](http
 
 == Frequently Asked Questions ==
 
-= I installed version 1.2 of the plugin and apparently it does not track likes =
-Version 1.2 of the plugin had a bug on plugin activation. Is solved in the next versions. Please update your plugin
+= I installed version 1.2 or 1.3 of the plugin and apparently it does not track likes =
+Version 1.2 and 1.3 of the plugin had a bug on plugin activation. Is solved in version 1.4 and above. Please update your plugin
 
 = Why does not appear the like button in the frontend? =
 Plugin waits for **bbp_theme_before_reply_admin_links** action. Check your theme for this action. Another solutions is to add manually a call to the function that shows the button: **bbp_like_button()**.
@@ -82,6 +84,15 @@ Plugin waits for **bbp_theme_before_reply_admin_links** action. Check your theme
 You can ask questions about the plugin in the plugin official site: [bbPress Like Button](http://jordiplana.com/bbpress-like-button-plugin)
 
 == Change Log ==
+= 1.4 =
+* **MAJOR UPGRADE**
+* Fixed broken plugin
+* Removed custom database table creation and usage
+* Moved all data saving to Wordpress native tables
+* Fixed static files loading
+* Rework on Like logs (removed date timestamp and sortable options for the grid)
+* Code clean up
+* New translation: Serbo-Croatian
 = 1.3 =
 * Fixed activation hook error (creating plugin table)
 * Added Macedonian language
