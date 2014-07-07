@@ -34,20 +34,25 @@ if(!empty($results)){
         //Preprocess
         $user = get_userdata($like['meta_value']);
         $post = get_post($like['post_id']);
+        $post_title = $post->post_title;
 
         if($post->post_type=='reply'){
             $parent_id = $post->post_parent;
             $extra_link = '#post-'.$post->ID;
+            if(empty($post_title)) {
+                $post_title = get_the_title($post->post_parent);
+            }
         }else{
             $parent_id = $like['post_id'];
             $extra_link = '';
+            $post_title .= ' (OP)';
         }
         $link = get_permalink($parent_id).$extra_link;
 
         //Output
         $data[]['cell'] = array(
             $user->user_login,
-            $post->post_name,
+            $post_title,
             '<a href="post.php?post='.$like['post_id'].'&action=edit" target="_blank" >'.__('Edit','bbpl').'</a> | <a href="'.$link.'" target="_blank" >'.__('View','bbpl').'</a>'
         );
     }

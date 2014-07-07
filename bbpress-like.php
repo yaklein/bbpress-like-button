@@ -5,7 +5,7 @@
  * Description: Add a Like button in all your posts and replies. Let the users appreciate others contribution.
  * Author:      Jordi Plana
  * Author URI:  http://jordiplana.com
- * Version:     1.4
+ * Version:     1.5
  */
 
 load_plugin_textdomain( 'bbpl', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
