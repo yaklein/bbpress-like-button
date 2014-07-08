@@ -120,7 +120,6 @@ class bbpress_like {
     function settings_link($links, $file) {
         $plugin_file = $this->plugin_name.'/'.'bbpress-like.php';
         //make sure it is our plugin we are modifying
-        var_dump($file);var_dump($plugin_file); echo "<br/>";//die;
         if ( $file == $plugin_file ) {
             $settings_link = '<a href="'.admin_url('admin.php?page=bbpress-likes').'">'.__('Settings',$this->l10n).'</a>';
             array_push($links, $settings_link);
