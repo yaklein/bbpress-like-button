@@ -2,7 +2,7 @@
 Tags: rate, rating, ratings, vote, votes, voting, star, like, widget, widgets, comment, comments, post, posts, page, admin, plugin, ajax, buddypress, bbpress
 Requires at least: 2.6
 Tested up to: 3.9.1
-Stable tag: 1.5
+Stable tag: 1.5.1
 Contributors: Jordi Plana
 Donate link: http://jordiplana.com/go/bbpress-like-button-donation
 License: GPLv2 or later
