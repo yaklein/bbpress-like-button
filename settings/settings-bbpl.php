@@ -52,21 +52,35 @@ $wpsf_settings[] = array(
     'section_description' => __('Adjust the labels used on the frontend. <br/>If you want to change all the other labels the plugin uses, you can do it using Poedit with the source catalog provided. <a href="http://jordiplana.com/translate-wordpress-plugin-theme-language" target="_blank">Read detailed instructions</a>','bbpl'),
     'section_order' => 6,
     'fields' => array(
-        array(
-            'id' => 'label_like_button_action',
-            'title' => __('Like button, before click','bbpl'),
-            'desc' => __('It will only show this label if <strong>Show button label</strong> option is enabled.','bbpl'),
-            'type' => 'text',
-            'std' => __('Like this','bbpl')
-        ),
-        array(
-            'id' => 'label_like_button_action_done',
-            'title' => __('Like button, after click','bbpl'),
-            'desc' => __('It will only show this label if <strong>Show button label</strong> option is enabled.','bbpl'),
-            'type' => 'text',
-            'std' => __('You liked this','bbpl')
-        ),
-        array(
+		array(
+			'id' => 'label_like_button_action',
+			'title' => __('Like button, before click','bbpl'),
+			'desc' => __('It will only show this label if <strong>Show button label</strong> option is enabled.','bbpl'),
+			'type' => 'text',
+			'std' => __('Like this','bbpl')
+		),
+		array(
+			'id' => 'label_like_button_action_done',
+			'title' => __('Like button, after click','bbpl'),
+			'desc' => __('It will only show this label if <strong>Show button label</strong> option is enabled.','bbpl'),
+			'type' => 'text',
+			'std' => __('You liked this','bbpl')
+		),
+		array(
+			'id' => 'label_unlike_button_action',
+			'title' => __('UnLike button, before click','bbpl'),
+			'desc' => __('It will only show this label if <strong>Show button label</strong> option is enabled.','bbpl'),
+			'type' => 'text',
+			'std' => __('Not like this','bbpl')
+		),
+		array(
+			'id' => 'label_unlike_button_action_done',
+			'title' => __('Not like button, after click','bbpl'),
+			'desc' => __('It will only show this label if <strong>Show button label</strong> option is enabled.','bbpl'),
+			'type' => 'text',
+			'std' => __('You unliked this','bbpl')
+		),
+		array(
             'id' => 'label_like_button_buddypress',
             'title' => __('BuddyPress activity stream message','bbpl'),
             'desc' => __('Placeholders<ul><li>%%USERNAME%% - Public name of the user</li><li>%%TOPIC%% - Title of the topic where the like happened</li><li>%%FORUM%% - Title of the parent forum of the topic</li></ul><br/>It will only show this label if <strong>Show on BuddyPress activity stream</strong> option is enabled.','bbpl'),

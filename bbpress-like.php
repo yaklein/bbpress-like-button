@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: bbPress Like Button
+ * Plugin Name: bbPress Like Button - Edited
  * Plugin URI:  http://jordiplana.com/bbpress-like-button-plugin
  * Description: Add a Like button in all your posts and replies. Let the users appreciate others contribution.
- * Author:      Jordi Plana
+ * Author:      Jordi Plana - Edited:RT
  * Author URI:  http://jordiplana.com
  * Version:     1.5
  */

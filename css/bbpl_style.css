@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* CSS Document */
-div.bbpl_button_wrapper {
+div.bbpl_button_wrapper,div.bbpul_button_wrapper {
     float: right;
     margin-left: 10px;
 }
@@ -9,23 +9,27 @@ a.bbpl_button span {
     text-decoration: none !important;
 }
 
-a.bbpl_button {
+a.bbpl_button,a.bbpul_button {
     padding: 2px 0 2px 24px;
     float: left;
-    background: url('../img/thumbs_up_20_20.png') no-repeat;
     text-decoration: none !important;
 }
-
-a.bbpl_button.liked {
+a.bbpl_button {
+    background: url('../img/thumbs_up_20_20.png') no-repeat;
+}
+a.bbpul_button {
+    background: url('../img/thumbs_down_20_20.png') no-repeat;
+}
+a.bbpl_button.liked,a.bbpul_button.liked {
     opacity: 0.3;
 }
 
-a.bbpl_button.like-loading {
+a.bbpl_button.like-loading,a.bbpul_button.like-loading {
     background: url('../img/ajax-loader.gif') no-repeat;
 }
 
 span.bbpl_number {
-    float: left;
+    float: right;
     color: #093;
     font-size: 80%;
     padding: 4px 0;
